@@ -1,43 +1,52 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class MovieController extends Controller
+class movieController extends Controller
 {
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'poster' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-            'writer' => 'required|string|max:255',
-            'description' => 'required|string',
-            'genre' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
-        ]);
+        try {
 
-        $posterPath = $request->file('poster')->store('posters', 'public');
+            $request->validate([
+                'title' => 'required|string|max:255',
+                'poster' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+                'writer' => 'required|string|max:255',
+                'description' => 'required|string',
+                'genre' => 'required|string|max:255',
+                'price' => 'required|numeric|min:0',
+            ]);
 
-        $movie = Movie::create([
-            'title' => $request->title,
-            'poster' => $posterPath,
-            'writer' => $request->writer,
-            'description' => $request->description,
-            'review_rating' => 0,
-            'genre' => $request->genre,
-            'price' => $request->price,
-        ]);
+            $posterPath = $request->file('poster')->store('posters', 'public');
 
-        return response()->json([
-            'status' => 'success',
-            'code' => 201,
-            'message' => 'Movie created successfully',
-            'movie' => $movie
-        ], 201);
+            $movie = Movie::create([
+                'title' => $request->title,
+                'poster' => $posterPath,
+                'writer' => $request->writer,
+                'description' => $request->description,
+                'review_rating' => 0,
+                'genre' => $request->genre,
+                'price' => $request->price,
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'code' => 201,
+                'message' => 'Movie created successfully',
+                'movie' => $movie
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Something went wrong',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function update(Request $request, $id)
@@ -54,7 +63,7 @@ class MovieController extends Controller
 
         $request->validate([
             'title' => 'sometimes|string|max:255',
-            'poster' => 'sometimes|image|mimes:jpg,jpeg,png|max:2048',
+            'poster' => 'sometimes|image|mimes:jpg,jpeg,png,webp|max:2048',
             'writer' => 'sometimes|string|max:255',
             'description' => 'sometimes|string',
             'genre' => 'sometimes|string|max:255',
@@ -149,4 +158,16 @@ class MovieController extends Controller
             'movie' => $movie
         ], 200);
     }
+
+    // public function showDetailMovie($id) {
+    //     $movie = Movie::findOrFail($id);
+
+    //     $user = auth()->user();
+    //     $hasPurchased = false;
+
+    //     if ($user) {
+    //         $hasPurchased = $user->purchases()->where('movie_id', $movie->id)->exists();
+    //     }
+    //     return view('movie.show', compact('movie', 'hasPurchased'));
+    // }
 }

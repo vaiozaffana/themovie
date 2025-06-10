@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -7,6 +7,161 @@
 @source "../**/*.vue";
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-orbitron: "Orbitron";
+    --font-rajdhani: "Rajdhani";
+
+    --color-gray-900: #0f0f17;
+    --color-gray-800: #1a1a2e;
+    --color-gray-700: #2a2a3c;
+
+    --color-cyan-500: #00f2ff;
+    --color-cyan-400: #6bf2ff;
+
+    --color-pink-500: #ff00f5;
+    --color-pink-400: #ff6bf5;
+
+    --shadow-neon-cyan: 0 0 10px rgba(0, 242, 255, 0.5);
+    --shadow-neon-pink: 0 0 10px rgba(255, 0, 245, 0.5);
 }
+
+@layer base {
+    body {
+        @apply font-rajdhani;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-orbitron;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.peer:checked ~ .peer-checked\:text-yellow-400 {
+    color: #facc15 !important;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.neon-text {
+    text-shadow: 0 0 5px theme('colors.cyan.400'),
+                 0 0 10px theme('colors.cyan.400'),
+                 0 0 20px theme('colors.cyan.400');
+}
+
+.neon-text-pink {
+    text-shadow: 0 0 5px theme('colors.pink.500'),
+                 0 0 10px theme('colors.pink.500'),
+                 0 0 20px theme('colors.pink.500');
+}
+
+.terminal-text::after {
+    content: "|";
+    animation: blink 1s step-end infinite;
+    @apply text-pink-500;
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-cyan-500 to-pink-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-gradient-to-b from-cyan-400 to-pink-400;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-none {
+    -webkit-line-clamp: unset;
+}
+
+#particle-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Efek transisi untuk perubahan warna bintang */
+.fa-star {
+    transition: color 0.2s ease;
+}
+
+/* Efek scale saat hover */
+button:hover .fa-star {
+    transform: scale(1.1);
+}
+
+/* Pastikan bintang tidak memiliki margin bottom */
+.fa-star:before {
+    display: block;
+}
+
+/* Efek hover untuk tombol */
+.fa-edit, .fa-trash {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.fa-edit:hover {
+    transform: scale(1.2);
+    color: #22d3ee; /* Warna cyan lebih terang */
+}
+
+.fa-trash:hover {
+    transform: scale(1.2);
+    color: #f472b6; /* Warna pink lebih terang */
+}
+
+/* Jarak antara tombol */
+.space-x-3 > * + * {
+    margin-left: 0.75rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-15px);}
+    60% {transform: translateY(-7px);}
+}
+
+.animate-bounce {
+    animation: bounce 1.5s infinite;
+}
+
+.transform {
+    transition-property: transform, opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+

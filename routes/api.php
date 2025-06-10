@@ -1,29 +1,26 @@
 <?php
 
-use App\Http\Controllers\API\MovieController as APIMovieController;
-use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\api\auth\authController as apiAuthController;
+use App\Http\Controllers\api\movieController as apiMovieController;
+use App\Http\Controllers\api\moviePurchaseController as apiMoviePurchaseController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MovieController;
-use App\Http\Controllers\MoviePurchaseController;
-use App\Http\Controllers\UserController;
 
-// User Authentication Routes
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [apiAuthController::class, 'register']);
+Route::post('/login', [apiAuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group( function () {
-    Route::post('/logout', [AuthController::class, 'logout']);
-    Route::post('/movies/{id}/buy', [MoviePurchaseController::class, 'buyMovie']);
-    Route::post('/movies/{id}/review', [MoviePurchaseController::class, 'reviewMovie']);
-    Route::delete('/movies/{id}/delete', [MoviePurchaseController::class, 'deleteMovie']);
+    Route::post('/logout', [apiAuthController::class, 'logout']);
+    Route::post('/movies/{id}/buy', [apiMoviePurchaseController::class, 'buyMovie']);
+    Route::post('/movies/{id}/review', [apiMoviePurchaseController::class, 'reviewMovie']);
+    Route::delete('/movies/{id}/delete', [apiMoviePurchaseController::class, 'deleteMovie']);
 });
 
 
 Route::middleware('auth:sanctum', 'admin')->group( function () {
-    Route::post('/movies', [APIMovieController::class, 'store']);
-    Route::put('/movies/{id}', [APIMovieController::class, 'update']);
-    Route::delete('/movies/{id}', [APIMovieController::class, 'destroy']);
+    Route::post('/movies', [apiMovieController::class, 'store']);
+    Route::put('/movies/{id}', [apiMovieController::class, 'update']);
+    Route::delete('/movies/{id}', [apiMovieController::class, 'destroy']);
 });
 
-Route::get('/movies', [APIMovieController::class, 'index']);
-Route::get('/movies/{id}', [APIMovieController::class,'show']);
+Route::get('/movies', [apiMovieController::class, 'index']);
+Route::get('/movies/{id}', [apiMovieController::class,'show'])->name('movies.show');

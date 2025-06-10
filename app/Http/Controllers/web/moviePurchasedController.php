@@ -1,13 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\web;
 
+use App\Http\Controllers\Controller;
 use App\Models\Movie;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
-class MoviePurchaseController extends Controller
+class moviePurchasedController extends Controller
 {
+    public function myMovies() {
+        $movies = Auth::user()->purchasedMovies()
+                    ->withPivot('purchased_at')
+                    ->orderBy('purchased_at', 'desc')
+                    ->paginate(12);
+
+        return view('user.my-movies', compact('movies'));
+    }
     public function buyMovie($id)
     {
         $user = auth()->user();
@@ -67,34 +76,32 @@ class MoviePurchaseController extends Controller
     }
 
 
-public function deleteMovie($id)
-{
-    $user = auth()->user();
-    $movie = Movie::findOrFail($id);
-    if (!$movie) {
+    public function deleteMovie($id)
+    {
+        $user = auth()->user();
+        $movie = Movie::findOrFail($id);
+        if (!$movie) {
+            return response()->json([
+                'status' => 'error',
+                'code' => 404,
+                'message' => 'Movie not found.'
+            ], 404);
+        }
+
+        if (!$user->movies()->where('movie_id', $id)->exists()) {
+            return response()->json([
+                'status' => 'error',
+                'code' => 403,
+                'message' => 'You cannot delete a movie you haven\'t purchased.'
+            ], 403);
+        }
+
+        $user->movies()->detach($id);
+
         return response()->json([
-            'status' => 'error',
-            'code' => 404,
-            'message' => 'Movie not found.'
-        ], 404);
+            'status' => 'success',
+            'code' => 200,
+            'message' => 'Movie removed from your collection.'
+        ], 200);
     }
-
-    if (!$user->movies()->where('movie_id', $id)->exists()) {
-        return response()->json([
-            'status' => 'error',
-            'code' => 403,
-            'message' => 'You cannot delete a movie you haven\'t purchased.'
-        ], 403);
-    }
-
-    $user->movies()->detach($id);
-
-    return response()->json([
-        'status' => 'success',
-        'code' => 200,
-        'message' => 'Movie removed from your collection.'
-    ], 200);
-}
-
-
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85c1d2065f70e38b0d6bf66559fb13c5",
+    "content-hash": "55e8dc6b8481c8a873a3033fd6f15714",
     "packages": [
         {
             "name": "brick/math",
@@ -645,16 +645,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.9.2",
+            "version": "7.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "d281ed313b989f213357e3be1a179f02196ac99b"
+                "reference": "7b2f29fe81dc4da0ca0ea7d42107a0845946ea77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/d281ed313b989f213357e3be1a179f02196ac99b",
-                "reference": "d281ed313b989f213357e3be1a179f02196ac99b",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/7b2f29fe81dc4da0ca0ea7d42107a0845946ea77",
+                "reference": "7b2f29fe81dc4da0ca0ea7d42107a0845946ea77",
                 "shasum": ""
             },
             "require": {
@@ -751,7 +751,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.9.2"
+                "source": "https://github.com/guzzle/guzzle/tree/7.9.3"
             },
             "funding": [
                 {
@@ -767,7 +767,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-24T11:22:20+00:00"
+            "time": "2025-03-27T13:37:11+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -2069,6 +2069,76 @@
                 }
             ],
             "time": "2024-12-08T08:18:47+00:00"
+        },
+        {
+            "name": "mckenziearts/laravel-notify",
+            "version": "v2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mckenziearts/laravel-notify.git",
+                "reference": "1b40ba9e6c9ebed08d84629377ebc5ac9dc8ec2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mckenziearts/laravel-notify/zipball/1b40ba9e6c9ebed08d84629377ebc5ac9dc8ec2b",
+                "reference": "1b40ba9e6c9ebed08d84629377ebc5ac9dc8ec2b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
+                "php": "~8.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.6",
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^8.0|^9.0|^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Notify": "Mckenziearts\\Notify\\Facades\\LaravelNotify"
+                    },
+                    "providers": [
+                        "Mckenziearts\\Notify\\LaravelNotifyServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Mckenziearts\\Notify\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arthur Monney",
+                    "email": "monneylobe@gmail.com"
+                }
+            ],
+            "description": "Flexible flash notifications for Laravel",
+            "keywords": [
+                "laravel",
+                "laravel-notify",
+                "notification"
+            ],
+            "support": {
+                "issues": "https://github.com/mckenziearts/laravel-notify/issues",
+                "source": "https://github.com/mckenziearts/laravel-notify"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/jvquilichini?locale.x=fr_FR",
+                    "type": "custom"
+                }
+            ],
+            "time": "2025-03-06T17:12:38+00:00"
         },
         {
             "name": "monolog/monolog",

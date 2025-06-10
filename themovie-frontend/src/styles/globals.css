@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f0f0f;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.5);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.8);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
+  }
+
+  .glow-box {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+  }

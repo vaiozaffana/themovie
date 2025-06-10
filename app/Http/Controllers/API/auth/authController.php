@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\api\auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends Controller
+class authController extends Controller
 {
     public function register(Request $request)
     {
@@ -32,7 +33,12 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        $token = $user->createToken('authToken')->plainTextToken;
+        // $token = $user->createToken('authToken')->plainTextToken;
+        $tokenResult = $user->createToken('authToken');
+        $token = $tokenResult->plainTextToken;
+        $accessToken = $tokenResult->accessToken;
+        $accessToken->expires_at = Carbon::now()->addHour();
+        $accessToken->save();
 
         return response()->json([
             'status' => 'success',
@@ -62,11 +68,15 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $token = $user->createToken('authToken')->plainTextToken;
+        $tokenResult = $user->createToken('authToken');
+        $token = $tokenResult->plainTextToken;
+        $accessToken = $tokenResult->accessToken;
+        $accessToken->expires_at = Carbon::now()->addHour();
+        $accessToken->save();
 
         return response()->json([
             'status' => 'success',
-            'code' => '200',            
+            'code' => '200',
             'message' => 'User logged in successfully',
             'role' => $user->role,
             'user' => $user,

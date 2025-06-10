@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('writer');
             $table->text('description');
             $table->float('review_rating')->default(0);
+            $table->integer('review_count')->default(0);
             $table->string('genre');
             $table->decimal('price', 10, 2);
             $table->timestamps();
