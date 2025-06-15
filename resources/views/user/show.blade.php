@@ -68,10 +68,6 @@
                             @auth
                                 @if (auth()->user()->hasAlreadyPurchased($movie->id))
                                     <div class="flex gap-4">
-                                        <a href="#"
-                                            class="inline-block px-6 py-3 bg-gradient-to-r from-green-500 to-cyan-500 rounded-md text-white font-bold hover:shadow-lg hover:shadow-green-500/30 transition-all">
-                                            <i class="fas fa-play mr-2"></i> Watch Now
-                                        </a>
                                         <div class="flex items-center bg-gray-800/80 px-4 rounded-full border border-cyan-500/30">
                                             <i class="fas fa-check-circle text-green-400 mr-2"></i>
                                             <span>Purchased</span>
