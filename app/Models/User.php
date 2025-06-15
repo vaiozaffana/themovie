@@ -19,6 +19,11 @@ class User extends Authenticatable
         'role'
     ];
 
+    public function movies()
+{
+    return $this->hasMany(Movie::class);
+}
+
     public function movieReviews(): BelongsToMany
     {
         return $this->belongsToMany(Movie::class, 'user_movies')

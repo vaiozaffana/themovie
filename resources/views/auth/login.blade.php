@@ -59,32 +59,6 @@
             </button>
         </div>
 
-        <div class="mt-6">
-            <div class="relative">
-                <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-600"></div>
-                </div>
-                <div class="relative flex justify-center text-sm">
-                    <span class="px-2 bg-gray-800 text-gray-400">
-                        Or continue with
-                    </span>
-                </div>
-            </div>
-
-            <div class="mt-6 grid grid-cols-2 gap-3">
-                <a href="#"
-                    class="w-full inline-flex justify-center py-2 px-4 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-sm font-medium text-gray-300 hover:bg-gray-600 transition-colors">
-                    <i class="fab fa-google text-red-400"></i>
-                    <span class="ml-2">Google</span>
-                </a>
-
-                <a href="#"
-                    class="w-full inline-flex justify-center py-2 px-4 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-sm font-medium text-gray-300 hover:bg-gray-600 transition-colors">
-                    <i class="fab fa-github text-purple-400"></i>
-                    <span class="ml-2">GitHub</span>
-                </a>
-            </div>
-        </div>
 
     </form>
 @endsection

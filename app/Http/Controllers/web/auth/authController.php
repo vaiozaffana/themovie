@@ -37,7 +37,7 @@ class authController extends Controller
         ]);
 
         Auth::login($user);
-        return redirect()->route('dashboard')->with('success', 'Register successful. Welcome!');
+        return redirect()->route('dashboard')->with('success', 'Login successful!');
     }
 
     public function showLogin()
@@ -70,7 +70,7 @@ class authController extends Controller
             }
 
             Auth::login($admin);
-            return redirect()->route('admin.dashboard-data')->with('success', 'Welcome, Admin!');
+            return redirect()->route('admin.dashboard')->with('success', 'Welcome, Admin!');
 
             session(['admin_logged_in' => true]);
         }

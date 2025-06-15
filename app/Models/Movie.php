@@ -38,4 +38,13 @@ class Movie extends Model
     {
         return $this->belongsToMany(User::class, 'user_movies')->withPivot('rating', 'review');
     }
+
+    public function buyers()
+{
+    return $this->belongsToMany(User::class, 'user_purchases')
+                ->withPivot('purchased_at', 'price')
+                ->withTimestamps();
+}
+
+
 }

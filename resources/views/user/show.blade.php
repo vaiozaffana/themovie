@@ -194,61 +194,30 @@
                                     </form>
                                 </div>
                             @else
-                                {{-- <script>
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        @if (session('review_submitted'))
-                                            showAutoHidePopup();
-                                        @endif
-                                    });
-                                </script> --}}
+                            {{-- <div class="bg-gray-800/50 border border-pink-500/30 rounded-xl p-6 text-center">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-pink-500/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-exclamation-circle text-pink-400 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 text-pink-400">Purchase Required</h3>
+                                <p class="text-gray-400 mb-4">You need to purchase this movie before submitting a review</p>
+                                <a href="{{ route('checkout-show', $movie->id) }}"
+                                   class="inline-block px-6 py-2 bg-gradient-to-r from-pink-500 to-cyan-500 rounded-md text-white font-medium">
+                                   Buy Now {{ number_format($movie->price, 2) }} CR
+                                </a>
+                            </div> --}}
                             @endif
                         @else
                             <!-- Notifikasi Belum Membeli -->
-                            <div class="bg-gray-800/50 border border-cyan-500/30 rounded-xl p-6 mb-6">
-                                <h3 class="text-xl font-bold font-orbitron mb-4 text-cyan-400">ADD YOUR REVIEW</h3>
-                                <form action="{{ route('reviews.store', $movie->id) }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="movie_id" value="{{ $movie->id }}">
-
-                                    <!-- Rating Input -->
-                                    <div x-data="{ rating: 0, hoverRating: 0 }" class="mb-4">
-                                        <label class="block text-gray-400 mb-2">Your Rating</label>
-                                        <div class="flex items-center">
-                                            @for ($i = 1; $i <= 10; $i++)
-                                                <button type="button" @mouseenter="hoverRating = {{ $i }}"
-                                                    @mouseleave="hoverRating = rating" @click="rating = {{ $i }}"
-                                                    :class="{
-                                                        'text-yellow-400': {{ $i }} <= (hoverRating ||
-                                                            rating),
-                                                        'text-gray-400': {{ $i }} > (hoverRating ||
-                                                            rating)
-                                                    }"
-                                                    class="text-2xl cursor-pointer focus:outline-none">
-                                                    <i class="fas fa-star"></i>
-                                                </button>
-                                                <input type="hidden" name="rating" x-model="rating">
-                                            @endfor
-                                        </div>
-                                        @error('rating')
-                                            <span class="text-red-400 text-sm">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="mb-4">
-                                        <label class="block text-gray-400 mb-2">Your Review</label>
-                                        <textarea name="review" rows="4"
-                                            class="w-full px-4 py-2 bg-gray-700 border border-cyan-500/30 rounded-md text-white"
-                                            placeholder="Share your thoughts..." required>{{ old('review') }}</textarea>
-                                        @error('review')
-                                            <span class="text-red-400 text-sm">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
-                                    <button type="submit"
-                                        class="px-6 py-2 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-md text-white font-bold cursor-not-allowed">
-                                        Submit Review
-                                    </button>
-                                </form>
+                            <div class="bg-gray-800/50 border border-pink-500/30 rounded-xl p-6 text-center">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-pink-500/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-exclamation-circle text-pink-400 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 text-pink-400">Purchase Required</h3>
+                                <p class="text-gray-400 mb-4">You need to purchase this movie before submitting a review</p>
+                                <a href="{{ route('checkout-show', $movie->id) }}"
+                                   class="inline-block px-6 py-2 bg-gradient-to-r from-pink-500 to-cyan-500 rounded-md text-white font-medium">
+                                   Buy Now {{ number_format($movie->price, 2) }} CR
+                                </a>
                             </div>
                         @endif
                     @else
@@ -414,9 +383,6 @@
                 const reviewContent = document.getElementById(`review-content-${reviewId}`);
                 const editButtons = document.querySelectorAll(`[data-review-id="${reviewId}"] .edit-delete-buttons`);
                 const radioButtons = editForm.querySelectorAll('input[type="radio"]');
-                radioButtons.forEach(radio => {
-                    radio.checked = (radio.value == {{ $review->pivot->rating }});
-                });
 
                 // Toggle form edit
                 if (editForm.classList.contains('hidden')) {
@@ -660,10 +626,17 @@
                             @endif
                         @else
                             <!-- Notifikasi Belum Membeli -->
-                            <button id="warnButton"
-                                class="cursor-pointer my-6 px-4 py-2 bg-gray-800 border border-cyan-500/30 rounded-md text-cyan-400 hover:bg-cyan-500/10 transition-colors">
-                                <i class="fas fa-plus mr-2"></i> Add Your Review
-                            </button>
+                            <div class="bg-gray-800/50 border border-pink-500/30 rounded-xl p-6 text-center">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-pink-500/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-exclamation-circle text-pink-400 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 text-pink-400">Purchase Required</h3>
+                                <p class="text-gray-400 mb-4">You need to purchase this movie before submitting a review</p>
+                                <a href="{{ route('checkout-show', $movie->id) }}"
+                                   class="inline-block px-6 py-2 bg-gradient-to-r from-pink-500 to-cyan-500 rounded-md text-white font-medium">
+                                   Buy Now {{ number_format($movie->price, 2) }} CR
+                                </a>
+                            </div>
                         @endif
                     @else
                         <!-- Notifikasi Login -->

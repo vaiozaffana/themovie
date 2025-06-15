@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Genre;
 use App\Models\Movie;
 use App\Observers\MovieObserver;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
         Movie::observe(MovieObserver::class);
         Schema::defaultStringLength(191);
     }
