@@ -18,8 +18,8 @@
         <div class="w-full max-w-md relative z-10">
             <div class="text-center mb-8" x-data="neonText()" x-init="init()">
                 <a href="/" class="text-3xl font-orbitron font-bold inline-block">
-                    <span class="text-cyan-400" x-ref="text">NEURO</span>
-                    <span class="text-pink-500" x-ref="text2">FLIX</span>
+                    <span class="text-cyan-400" x-ref="text">MOVI</span>
+                    <span class="text-pink-500" x-ref="text2">FY</span>
                 </a>
             </div>
 
