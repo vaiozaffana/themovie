@@ -9,15 +9,14 @@
         <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8">
             <h1 class="text-4xl md:text-6xl font-bold mb-6 font-orbitron">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">
-                    DIVE INTO THE NEON FUTURE
+                    MENJELAJAHI MASA DEPAN
                 </span>
                 <br>
-                <span class="text-white">OF CINEMA</span>
+                <span class="text-white">SINEMA</span>
             </h1>
 
             <p class="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-gray-300">
-                Experience movie like never before with our cyber-enhanced streaming platform.
-                AI-curated, blockchain-secured, and neuro-optimized for your pleasure.
+                Platform streaming film masa kini dengan koleksi terkurasi, kualitas tayangan tinggi, dan akses yang mudah dari berbagai perangkat.
             </p>
 
             <a href="#movie-title">
@@ -50,13 +49,11 @@
                     <div class="text-cyan-400 mb-4">
                         <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
-                            </path>
-                        </svg>
+                                  d="M15 10l4.553 2.276A1 1 0 0120 13.118v1.764a1 1 0 01-.447.842L15 18m0-8v8m0-8H6a2 2 0 00-2 2v4a2 2 0 002 2h9"></path>
+                          </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">4K HOLOGRAM</h3>
-                    <p class="text-gray-400">Experience movies in stunning 4K holographic projection with neural sync
-                        technology.</p>
+                    <h3 class="text-xl font-bold mb-2 text-white">Streaming Resolusi Tinggi</h3>
+                    <p class="text-gray-400">Nikmati film dengan kualitas Full HD hingga 4K, mendukung pengalaman menonton yang tajam dan imersif.</p>
                 </div>
 
                 <div
@@ -64,13 +61,12 @@
                     <div class="text-pink-500 mb-4">
                         <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z">
-                            </path>
-                        </svg>
+                                  d="M4 4h16v4H4zM4 10h16v10H4zM8 14h.01M12 14h.01M16 14h.01"></path>
+                          </svg>
+
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">AI RECOMMENDATIONS</h3>
-                    <p class="text-gray-400">Our neural network learns your preferences to suggest perfect cinematic
-                        experiences.</p>
+                    <h3 class="text-xl font-bold mb-2 text-white">Koleksi Film Terkurasi</h3>
+                    <p class="text-gray-400">Jelajahi berbagai film dari berbagai genre yang telah dipilih dan dikurasi secara berkala untuk Anda.</p>
                 </div>
 
                 <div
@@ -78,13 +74,11 @@
                     <div class="text-cyan-400 mb-4">
                         <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-                            </path>
-                        </svg>
+                                  d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12v6m0 0l-3-3m3 3l3-3M12 3v9"></path>
+                          </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">DARKNET DOWNLOADS</h3>
-                    <p class="text-gray-400">Secure, anonymous downloads through our decentralized darknet distribution
-                        network.</p>
+                    <h3 class="text-xl font-bold mb-2 text-white">Akses Unduhan Legal</h3>
+                    <p class="text-gray-400">Unduh film secara legal dan aman untuk ditonton secara offline kapan saja.</p>
                 </div>
             </div>
         </div>
@@ -183,7 +177,7 @@
                 </button>
             </div>
         </div>
-    </section>
+    </section>
 
     <!-- AlpineJS and AJAX Script -->
     <script>
